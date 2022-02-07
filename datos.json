@@ -1,0 +1,23 @@
+ {
+   "cadena": "jhon",
+   "numero": "35",
+   "booleano": "true",
+   "arreglo": ["programar", "correr", "futbol"],
+   "objeto": {
+     "@twitter": "@jhon",
+     "correo": "jhon@algo.com"
+   },
+   "nulo": null
+ }
+
+ {
+   "cadena": "jhon",
+   "numero": "35",
+   "booleano": "true",
+   "arreglo": ["programar", "correr", "futbol"],
+   "objeto": {
+     "twitter": "@jhon",
+     "correo": "jhon@algo.com"
+   },
+   "nulo": null
+ }

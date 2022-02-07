@@ -1,22 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iteradores</title>
-</head>
-<body>
-  <h1>Nuevos Iterables</h1>
-  <script>
-    const iterable = new Map([["Nombre","Leonardo Rojas"],["edad",40],["Nacionalidad","Colombiano"]])
-    /*"Hola mundo" [1,2,3,4,5,2,1,3,4,5]*/;
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iteradores</title>
+  </head>
+  <body>
+    <h1>Nuevos Iterables</h1>
+    <script>
+      //const iterable = new Map([["Nombre","Leonardo Rojas"],["edad",40],["Nacionalidad","Colombiano"]])
+      /*"Hola mundo" [1,2,3,4,5,2,1,3,4,5]*/ //Acedemos al iterador del iterable
+      //const iterador = iterable[Symbol.iterator]();
 
-    //Acedemos al iterador del iterable
-      const iterador = iterable[Symbol.iterator]();
-
-      console.log(iterable);
-      console.log(iterador);
+      // console.log(iterable);
+      // console.log(iterador);
 
       // console.log(iterador.next());
       // console.log(iterador.next());
@@ -25,11 +23,152 @@
       // console.log(iterador.next());
       // console.log(iterador.next());
 
-      let next = iterador.next();
-      while(!next.done){
-        console.log(next.value);
-          next = iterador.next();
-      }
-  </script>
-</body>
+      // let next = iterador.next();
+      // while(!next.done){
+      //   console.log(next.value);
+      //     next = iterador.next();
+      //}
+      //-------------------------------------------primera parte---------------------------------------
+
+      //ejercicio1
+      // function* iterable(){
+      //  yield "Hola";
+      //  console.log("Hola Consola");
+      //  yield "Hola2"
+      //  console.log("Seguimos con más instruciones de nuestro codigo");
+      //  yield "Hola3"
+      //  yield "Hola4"
+      // }
+      // let iterador = iterable();
+      //                             /*// console.log(iterador.next());
+      //                             // console.log(iterador.next());
+      //                             // console.log(iterador.next());
+      //                             // console.log(iterador.next());
+      //                             // console.log(iterador.next());*/
+      // for (let y of iterador){
+      //   console.log(y)
+      // }
+
+      // const arreglo = [...iterable()];
+      // console.log(arreglo)
+
+      //ejercicio2
+      // function* ecuaciones(){//creo el codigo que va a ejecutar la funcion
+      //   let a = 5, b = 6;
+      //   yield (a+b);
+
+      //   function resta(){
+      //     a=8,b=4;
+      //    return console.log(a-b)
+      //   }
+      //   yield resta;
+      //   yield "Terminamos"
+
+      // }
+      // let resolver = ecuaciones();//lo asigno a una variable
+      // for (let y of resolver) {//lo rrecorro
+      //   console.log(y)
+      // }
+      // const array = [...ecuaciones()];//lo paso  a un array
+      // console.log(array);
+
+      //ejercicio3
+      // function cuadrado(valor){
+      //   setTimeout(()=>{
+      //    return console.log({valor, resultado: valor * valor})
+      //   },Math.random() * 1000);
+      // }
+
+      // function* generador(){
+      //   console.log("Inicia generator");
+      //   yield cuadrado(0);
+      //   yield cuadrado(1);
+      //   yield cuadrado(2);
+      //   yield cuadrado(3);
+      //   yield cuadrado(4);
+      //   yield cuadrado(5);
+      //   console.log("Termina generator");
+      // }
+      // let gen = generador();
+      // for (const y of gen) {
+      //   console.log(y)
+
+      // }
+
+      //-----------------------------------------------------------proxy------------------------------
+      // const persona = {
+      //   nombre: "",
+      //   apellido: "",
+      //   edad: 0,
+      // };
+
+      // const manejador = {
+      //   set(obj, prop, valor) {
+      //     if (Object.keys(obj).indexOf(prop) === -1) {
+      //       return console.error(
+      //         `La propiedad "${prop}" No existe en el objeto persona`
+      //       );
+      //     }
+      //     if (
+      //       (prop === "nombre" || prop === "apellido") && !(/^[A-Za-zÑñáÁÉÍÓÚÉÍÓÚ\s]+$/g.test(valor))
+      //     ){
+      //         return console.error(`La propiedad "${prop}" sólo acepta letras y espacion en blanco`);
+      //     }
+      //     obj[prop] = valor;
+      //   },
+      // };
+
+      // const leo = new Proxy(persona, manejador);
+      // leo.nombre = "leonardo";
+      // leo.apellido = "Rojas",
+      // leo.edad = 40;
+      // leo.twitter = "@leonardo";
+      // console.log(leo);
+      // console.log(persona);
+
+      //---------------------------------------Propiedades dinamicas-----------------------------------
+
+      // const objUsuarios = {}
+      // const usuarios = ["leo","irma","karla","miguel","kenay","juan"]
+
+      // usuarios.forEach((usuario,index)=> objUsuarios[`id_${index}`] = usuario);
+      // console.log(objUsuarios);
+      //onsole.log(this)
+      const algo = {
+        cadena: "jhon",
+        numero: "35",
+        booleano: "true",
+        arreglo: ["programar", "correr", "futbol"],
+        objeto: {
+          twitter: "@jhon",
+          correo: "jhon@algo.com",
+        },
+        nulo: null,
+      };
+      console.log(JSON.parse("{}"));
+      console.log(JSON.parse("19"));
+
+      console.log(JSON.stringify([1, 2.3]));
+      console.log(JSON.stringify(true));
+      console.log(JSON.stringify(false));
+      console.log(JSON.stringify(undefined));
+      console.log(JSON.stringify(null));
+      console.log(JSON.stringify({ x: 2, y: 3 }));
+      console.log(JSON.stringify(algo));
+
+      console.log(
+        JSON.stringify({
+          cadena: "jhon",
+          numero: "35",
+          booleano: "true",
+          arreglo: ["programar", "correr", "futbol"],
+          objeto: {
+            "@twitter": "@jhon",
+            correo: "jhon@algo.com",
+          },
+          nulo: null,
+        })
+      );
+    </script>
+  </body>
 </html>
